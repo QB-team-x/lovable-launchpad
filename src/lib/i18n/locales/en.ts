@@ -53,5 +53,4 @@ export const en: Record<keyof typeof ar, string> = {
   not_found: "This page was not found",
   loading: "Loading...",
   no_links: "No links yet.",
-}
 };
