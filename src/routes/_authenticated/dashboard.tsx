@@ -163,6 +163,7 @@ function BioLinksEditor({ userId }: { userId: string }) {
     if (target < 0 || target >= links.length) return;
     const a = links[index];
     const b = links[target];
+    if (!a || !b) return;
     await Promise.all([
       supabase.from("bio_links").update({ sort_order: target }).eq("id", a.id),
       supabase.from("bio_links").update({ sort_order: index }).eq("id", b.id),
