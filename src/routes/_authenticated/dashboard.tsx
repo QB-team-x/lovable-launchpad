@@ -21,7 +21,7 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: Dashboard;
+  component: Dashboard,
 });
 
 const TABS = [
