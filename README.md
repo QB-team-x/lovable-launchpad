@@ -74,3 +74,32 @@ curl "$VITE_SUPABASE_URL/rest/v1/profiles?select=handle,display_name" \
 ## خارج النطاق حالياً / Out of scope
 
 محرك ألعاب الدردشة، نظام البطولات، ومتجر الأفاتار — ستُبنى في مراحل لاحقة.
+
+---
+
+## هيكلة المشروع (مهم للتوسّع)
+
+```text
+src/
+  components/        مكوّنات مشتركة عامة فقط
+    ui/              عناصر واجهة أساسية (Button, Input, Field, Card)
+    layout/          عناصر الهيكل العام (Brand, LangToggle)
+  config/            ثوابت التطبيق (platforms.ts, dashboard.ts)
+  features/          كل ميزة في مجلد مستقل
+    auth/            hooks/use-auth.ts
+    profile/         api.ts + components/
+    bio-links/       api.ts + components/
+    dashboard/       components/ (Coming soon + التنقّل)
+  lib/               أدوات عامة (i18n/, utils.ts)
+    i18n/            المزوّد + locales/ar.ts + locales/en.ts
+  routes/            صفحات TanStack Router فقط (رقيقة، بدون منطق)
+  integrations/      عميل Lovable Cloud (مولّد تلقائياً — لا يُعدّل)
+```
+
+### قواعد الإضافة مستقبلاً
+1. أي ميزة جديدة (ألعاب، بطولات، متجر أفاتار) = مجلد جديد داخل `src/features/<feature>/`
+   يحتوي على `api.ts` (كل استعلامات قاعدة البيانات) و`components/` و`index.ts` للتصدير.
+2. ملفات `src/routes/*` تبقى رقيقة: تعريف الراوت + `head()` + استدعاء مكوّن الميزة.
+3. لا استعلامات Supabase داخل ملفات الراوت أو المكوّنات — فقط عبر `api.ts` الخاص بالميزة.
+4. النصوص كلها تُضاف إلى `src/lib/i18n/locales/ar.ts` و`en.ts` (المفاتيح متطابقة إجبارياً بالأنواع).
+5. الألوان دائماً عبر توكنات `src/styles.css` (`bg-primary`, `text-foreground`…) وليس ألوان مباشرة.

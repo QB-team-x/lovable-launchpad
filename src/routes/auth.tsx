@@ -2,7 +2,8 @@ import { useState } from "react";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { Brand, Button, Card, Field, Input, LangToggle } from "@/components/ui";
+import { Brand, LangToggle } from "@/components/layout";
+import { Button, Card, Field, Input } from "@/components/ui";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/auth")({

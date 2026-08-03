@@ -1,8 +1,11 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-import { Brand, Card, LangToggle } from "@/components/ui";
+import { Brand, LangToggle } from "@/components/layout";
+import { Card } from "@/components/ui";
 import { useI18n } from "@/lib/i18n";
+import { getPlatformLinks, getProfileByHandle } from "@/features/profile";
+import { listBioLinks } from "@/features/bio-links";
+
 
 export const Route = createFileRoute("/u/$handle")({
   head: ({ params }) => ({
@@ -35,23 +38,16 @@ function PublicPage() {
   const { data, isLoading } = useQuery({
     queryKey: ["public-profile", handle],
     queryFn: async () => {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("id, display_name, avatar_url, bio, handle")
-        .eq("handle", handle.toLowerCase())
-        .maybeSingle();
+      const profile = await getProfileByHandle(handle);
       if (!profile) throw notFound();
-      const [{ data: links }, { data: platforms }] = await Promise.all([
-        supabase
-          .from("bio_links")
-          .select("id, label, url")
-          .eq("profile_id", profile.id)
-          .order("sort_order"),
-        supabase.from("platform_links").select("platform, handle").eq("profile_id", profile.id),
+      const [links, platforms] = await Promise.all([
+        listBioLinks(profile.id),
+        getPlatformLinks(profile.id),
       ]);
-      return { profile, links: links ?? [], platforms: platforms ?? [] };
+      return { profile, links, platforms };
     },
   });
+
 
   if (isLoading)
     return (
