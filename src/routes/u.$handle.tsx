@@ -1,9 +1,11 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { Brand, LangToggle } from "@/components/layout";
 import { Card } from "@/components/ui";
 import { useI18n } from "@/lib/i18n";
+import { getPlatformLinks, getProfileByHandle } from "@/features/profile";
+import { listBioLinks } from "@/features/bio-links";
+
 
 export const Route = createFileRoute("/u/$handle")({
   head: ({ params }) => ({
