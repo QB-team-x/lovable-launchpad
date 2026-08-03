@@ -14,56 +14,103 @@ export type Database = {
   }
   public: {
     Tables: {
-      players: {
+      bio_links: {
         Row: {
           created_at: string
           id: string
-          nickname: string
-          room_id: string
+          label: string
+          profile_id: string
+          sort_order: number
+          url: string
         }
         Insert: {
           created_at?: string
           id?: string
-          nickname: string
-          room_id: string
+          label: string
+          profile_id: string
+          sort_order?: number
+          url: string
         }
         Update: {
           created_at?: string
           id?: string
-          nickname?: string
-          room_id?: string
+          label?: string
+          profile_id?: string
+          sort_order?: number
+          url?: string
         }
         Relationships: [
           {
-            foreignKeyName: "players_room_id_fkey"
-            columns: ["room_id"]
+            foreignKeyName: "bio_links_profile_id_fkey"
+            columns: ["profile_id"]
             isOneToOne: false
-            referencedRelation: "rooms"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
       }
-      rooms: {
+      platform_links: {
         Row: {
           created_at: string
+          handle: string
           id: string
-          name: string
-          state: Json
-          status: string
+          platform: Database["public"]["Enums"]["stream_platform"]
+          profile_id: string
         }
         Insert: {
           created_at?: string
+          handle: string
           id?: string
-          name: string
-          state?: Json
-          status?: string
+          platform: Database["public"]["Enums"]["stream_platform"]
+          profile_id: string
         }
         Update: {
           created_at?: string
+          handle?: string
           id?: string
-          name?: string
-          state?: Json
-          status?: string
+          platform?: Database["public"]["Enums"]["stream_platform"]
+          profile_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "platform_links_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          display_name: string | null
+          handle: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          handle?: string | null
+          id: string
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          handle?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
         }
         Relationships: []
       }
@@ -75,7 +122,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      app_role: "creator" | "viewer"
+      stream_platform: "youtube" | "kick" | "tiktok"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -202,6 +250,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["creator", "viewer"],
+      stream_platform: ["youtube", "kick", "tiktok"],
+    },
   },
 } as const
