@@ -7,8 +7,8 @@ export const DEFAULT_CHAT_SOURCE = "@XDreemB52";
 
 export const CHAT_SOURCE_STORAGE_KEY = "qblive-chat-source";
 
-/** The API allows 200ms, but a calmer floor keeps the landing page light. */
-export const MIN_POLL_MS = 1500;
+/** Fastest interval the API allows; it drives the poll rate via `pollAfterMs`. */
+export const MIN_POLL_MS = 200;
 
 /** Backoff after a failed request. */
 export const RETRY_POLL_MS = 5000;
