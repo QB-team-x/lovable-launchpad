@@ -1,14 +1,8 @@
 import { supabase } from "@/integrations/supabase/client";
+import type { Tables, TablesUpdate } from "@/integrations/supabase/types";
 import type { Platform } from "@/config/platforms";
 
-export type Profile = {
-  id: string;
-  role: string | null;
-  handle: string | null;
-  display_name: string | null;
-  avatar_url: string | null;
-  bio: string | null;
-};
+export type Profile = Tables<"profiles">;
 
 export type PlatformHandles = Record<Platform, string>;
 
@@ -34,7 +28,7 @@ export async function getPlatformLinks(profileId: string) {
   return data ?? [];
 }
 
-export async function updateProfile(userId: string, patch: Partial<Profile>) {
+export async function updateProfile(userId: string, patch: TablesUpdate<"profiles">) {
   return supabase.from("profiles").update(patch).eq("id", userId);
 }
 
