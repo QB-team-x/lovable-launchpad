@@ -51,4 +51,11 @@ export const ar = {
   not_found: "لم يتم العثور على هذه الصفحة",
   loading: "جاري التحميل...",
   no_links: "لا توجد روابط بعد.",
+  chat_account: "حساب اليوتيوب",
+  chat_apply: "عرض",
+  chat_title: "شات اليوتيوب",
+  chat_live: "مباشر",
+  chat_offline: "غير مباشر",
+  chat_empty: "لا توجد رسائل بعد.",
+  chat_error: "تعذّر جلب الشات، جاري إعادة المحاولة...",
 } as const;

@@ -53,4 +53,11 @@ export const en: Record<keyof typeof ar, string> = {
   not_found: "This page was not found",
   loading: "Loading...",
   no_links: "No links yet.",
+  chat_account: "YouTube account",
+  chat_apply: "Show",
+  chat_title: "YouTube chat",
+  chat_live: "Live",
+  chat_offline: "Offline",
+  chat_empty: "No messages yet.",
+  chat_error: "Couldn't load the chat, retrying...",
 };
