@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Brand, LangToggle } from "@/components/ui";
-import { ProfileForm } from "@/components/profile-form";
+import { Brand, LangToggle } from "@/components/layout";
+import { ProfileForm } from "@/features/profile";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/_authenticated/profile")({

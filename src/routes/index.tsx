@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Brand, Button, Card, LangToggle } from "@/components/ui";
+import { Brand, LangToggle } from "@/components/layout";
+import { Button, Card } from "@/components/ui";
 import { useI18n } from "@/lib/i18n";
-import { useAuth } from "@/lib/auth";
+import { useAuth } from "@/features/auth";
 
 export const Route = createFileRoute("/")({
   head: () => ({
