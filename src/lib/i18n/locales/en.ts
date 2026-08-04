@@ -60,4 +60,10 @@ export const en: Record<keyof typeof ar, string> = {
   chat_offline: "Offline",
   chat_empty: "No messages yet.",
   chat_error: "Couldn't load the chat, retrying...",
+  landing_badge: "The first interactive live games platform",
+  curtain_title: "Let your audience play with you, live",
+  curtain_sub:
+    "qbLive connects your stream to your viewers: games driven from chat, tournaments between viewers, and a clean link-in-bio page.",
+  cta_games: "Go to games",
 };
+
