@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Brand, LangToggle } from "@/components/layout";
-import { Button, Card } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui";
 import { useI18n } from "@/lib/i18n";
 import { useAuth } from "@/features/auth";
-import { ChatAccountBar, LiveChatPanel, useChatSource } from "@/features/live-chat";
+import { useChatSource } from "@/features/live-chat";
+import { LandingHero, CurtainSection } from "@/features/landing";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
