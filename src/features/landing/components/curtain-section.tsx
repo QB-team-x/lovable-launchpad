@@ -51,12 +51,14 @@ export function CurtainSection() {
     <div ref={track} className="relative h-[220vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
         <div
-          style={{
-            transform: `translate3d(0, ${shift}%, 0)`,
-            opacity: 0.25 + progress * 0.75,
-          }}
-          className="flex h-full flex-col justify-center rounded-t-[2.5rem] border-t border-border bg-background/60 px-5 backdrop-blur-2xl transition-[opacity] duration-300 will-change-transform"
+          style={{ transform: `translate3d(0, ${shift}%, 0)` }}
+          className="relative flex h-full flex-col justify-center rounded-t-[4rem] border-x-2 border-t-4 border-primary/70 bg-background/55 px-5 shadow-[0_-24px_70px_-20px_var(--color-primary)] backdrop-blur-2xl will-change-transform"
         >
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-[4rem] bg-gradient-to-r from-transparent via-primary to-transparent"
+          />
+
           <div className="mx-auto w-full max-w-4xl text-center">
             <h2 className="text-3xl font-extrabold text-foreground sm:text-5xl">
               {t("curtain_title")}
