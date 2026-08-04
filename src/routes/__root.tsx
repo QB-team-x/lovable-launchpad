@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { CANONICAL_REDIRECT_SCRIPT } from "../config/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { I18nProvider } from "../lib/i18n";
 
@@ -95,8 +94,6 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="ar" dir="rtl" className="dark">
       <head>
-        {/* يسبق كل شيء: يخرج الزائر من نطاق lovable القديم قبل أن يُرسم أي محتوى */}
-        <script dangerouslySetInnerHTML={{ __html: CANONICAL_REDIRECT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>

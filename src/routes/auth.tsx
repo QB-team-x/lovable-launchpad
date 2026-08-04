@@ -31,11 +31,25 @@ function AuthPage() {
   const [role, setRole] = useState<"creator" | "viewer">("creator");
   const [msg, setMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [canResend, setCanResend] = useState(false);
+
+  const resend = async () => {
+    setBusy(true);
+    setMsg(null);
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email,
+      options: { emailRedirectTo: SITE_URL },
+    });
+    setBusy(false);
+    setMsg(error ? error.message : t("resend_sent"));
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
     setMsg(null);
+    setCanResend(false);
     if (mode === "signup") {
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -46,7 +60,16 @@ function AuthPage() {
       });
       setBusy(false);
       if (error) return setMsg(error.message);
-      if (!data.session) return setMsg("تحقق من بريدك الإلكتروني لتأكيد الحساب / Check your email");
+      // Supabase لا يكشف أن البريد مسجّل مسبقاً: يعيد مستخدماً بـ identities فارغة
+      // ولا يرسل أي رسالة. بدون هذا الفحص تظهر «تحقّق من بريدك» ولا يصل شيء أبداً.
+      if (data.user && data.user.identities?.length === 0) {
+        setCanResend(true);
+        return setMsg(t("already_registered"));
+      }
+      if (!data.session) {
+        setCanResend(true);
+        return setMsg(t("check_email"));
+      }
       navigate({ to: role === "creator" ? "/onboarding" : "/profile" });
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -106,6 +129,16 @@ function AuthPage() {
             <Button type="submit" disabled={busy} className="w-full">
               {mode === "signup" ? t("signup") : t("login")}
             </Button>
+            {canResend && (
+              <button
+                type="button"
+                onClick={resend}
+                disabled={busy}
+                className="block w-full text-center text-xs text-muted-foreground underline hover:text-foreground disabled:opacity-50"
+              >
+                {t("resend_confirm")}
+              </button>
+            )}
           </form>
 
           <Link
