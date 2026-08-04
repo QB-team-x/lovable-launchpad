@@ -1,1 +1,20 @@
 project_id = "fzhhxgxdzbgtievrizhe"
+
+# ملاحظة: هذه الإعدادات يطبّقها Supabase CLI محلياً.
+# للمشروع المستضاف يجب ضبط نفس القيم من لوحة التحكم:
+# Authentication → URL Configuration، و Authentication → Emails → Templates.
+[auth]
+site_url = "https://lovable-launchpad-woad.vercel.app"
+additional_redirect_urls = [
+  "https://lovable-launchpad-woad.vercel.app",
+  "https://lovable-launchpad-woad.vercel.app/**",
+  "http://localhost:8080",
+  "http://localhost:8080/**",
+]
+
+[auth.email]
+enable_confirmations = true
+
+[auth.email.template.confirmation]
+subject = "أكّد بريدك في qbLive"
+content_path = "./supabase/templates/confirm-signup.html"

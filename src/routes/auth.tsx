@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { z } from "zod";
+import { SITE_URL } from "@/config/site";
 import { supabase } from "@/integrations/supabase/client";
 import { Brand, LangToggle } from "@/components/layout";
 import { Button, Card, Field, Input } from "@/components/ui";
@@ -39,7 +40,9 @@ function AuthPage() {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: window.location.origin, data: { role } },
+        // النطاق الرسمي وليس window.location.origin — وإلا عاد رابط التأكيد
+        // إلى النطاق الذي سجّل منه المستخدم (lovable.app القديم مثلاً).
+        options: { emailRedirectTo: SITE_URL, data: { role } },
       });
       setBusy(false);
       if (error) return setMsg(error.message);

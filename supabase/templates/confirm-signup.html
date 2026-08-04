@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ar" dir="rtl" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="supported-color-schemes" content="dark" />
+    <title>تأكيد بريدك في qbLive</title>
+    <!--[if mso]>
+      <xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+    <![endif]-->
+    <style>
+      /* Outlook/Gmail تتجاهل أغلب CSS — كل التنسيق الأساسي inline. هذا للتحسينات فقط. */
+      a { text-decoration: none; }
+      @media only screen and (max-width: 600px) {
+        .qb-card { padding: 28px 20px !important; }
+        .qb-h1 { font-size: 22px !important; }
+      }
+    </style>
+  </head>
+  <body
+    style="margin:0;padding:0;background:#08080d;color:#f4f5f9;-webkit-font-smoothing:antialiased;"
+  >
+    <!-- نص المعاينة في صندوق الوارد -->
+    <div
+      style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;height:0;width:0;"
+    >
+      خطوة أخيرة: أكّد بريدك لتفعيل حساب qbLive. &#8203;&#8203;&#8203;&#8203;&#8203;&#8203;
+    </div>
+
+    <table
+      role="presentation"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      width="100%"
+      bgcolor="#08080d"
+      style="background:#08080d;width:100%;border-collapse:collapse;"
+    >
+      <tr>
+        <td align="center" style="padding:40px 16px;">
+          <table
+            role="presentation"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="560"
+            style="width:560px;max-width:560px;border-collapse:collapse;"
+          >
+            <!-- الشعار -->
+            <tr>
+              <td align="center" style="padding:0 0 26px;">
+                <img
+                  src="https://lovable-launchpad-woad.vercel.app/qblive-logo-email.png"
+                  alt="qbLive"
+                  width="120"
+                  height="112"
+                  style="display:block;margin:0 auto;width:120px;height:112px;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;"
+                />
+                <div
+                  style="margin-top:14px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.5px;color:#f4f5f9;"
+                  dir="ltr"
+                >
+                  qb<span style="color:#ff3b4e;">Live</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- البطاقة -->
+            <tr>
+              <td
+                class="qb-card"
+                bgcolor="#121218"
+                style="background:#121218;border:1px solid #232329;border-radius:16px;padding:36px 34px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;"
+              >
+                <h1
+                  class="qb-h1"
+                  style="margin:0 0 14px;font-size:25px;line-height:1.35;font-weight:800;color:#f4f5f9;"
+                >
+                  خطوة أخيرة — أكّد بريدك
+                </h1>
+                <p style="margin:0 0 26px;font-size:16px;line-height:1.75;color:#9d9daa;">
+                  أهلاً بك في <strong style="color:#f4f5f9;">qbLive</strong>. اضغط الزر أدناه لتفعيل
+                  حسابك والبدء في ألعاب الدردشة التفاعلية والبطولات وصفحة روابطك.
+                </p>
+
+                <!-- زر مضاد لكسر Outlook -->
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <tr>
+                    <td align="center" style="padding:0 0 22px;">
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        href="{{ .ConfirmationURL }}" style="height:52px;v-text-anchor:middle;width:300px;" arcsize="24%"
+                        stroke="f" fillcolor="#ff3b4e">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:17px;font-weight:bold;">
+                          تأكيد البريد الإلكتروني
+                        </center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!--[if !mso]><!-- -->
+                      <a
+                        href="{{ .ConfirmationURL }}"
+                        style="display:inline-block;background:#ff3b4e;color:#ffffff;font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:17px;font-weight:700;line-height:52px;height:52px;min-width:300px;text-align:center;border-radius:12px;padding:0 26px;"
+                        >تأكيد البريد الإلكتروني</a
+                      >
+                      <!--<![endif]-->
+                    </td>
+                  </tr>
+                </table>
+
+                <p style="margin:0 0 8px;font-size:13px;line-height:1.7;color:#6f6f7d;">
+                  إذا لم يعمل الزر، انسخ هذا الرابط وافتحه في المتصفّح:
+                </p>
+                <p
+                  dir="ltr"
+                  style="margin:0;font-size:12px;line-height:1.6;color:#ff3b4e;word-break:break-all;"
+                >
+                  <a href="{{ .ConfirmationURL }}" style="color:#ff3b4e;"
+                    >{{ .ConfirmationURL }}</a
+                  >
+                </p>
+
+                <!-- فاصل -->
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <tr>
+                    <td
+                      height="1"
+                      bgcolor="#232329"
+                      style="height:1px;line-height:1px;font-size:0;background:#232329;"
+                    >
+                      &nbsp;
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- النسخة الإنجليزية -->
+                <div dir="ltr" style="text-align:left;padding-top:24px;">
+                  <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#f4f5f9;">
+                    Confirm your email
+                  </p>
+                  <p style="margin:0;font-size:14px;line-height:1.7;color:#9d9daa;">
+                    Welcome to qbLive. Tap the button above to activate your account. The link works
+                    once and expires in 24 hours.
+                  </p>
+                </div>
+              </td>
+            </tr>
+
+            <!-- التذييل -->
+            <tr>
+              <td
+                style="padding:24px 10px 0;font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:12px;line-height:1.8;color:#6f6f7d;text-align:center;"
+              >
+                <p style="margin:0 0 6px;">
+                  الرابط صالح لمرة واحدة وينتهي خلال ٢٤ ساعة. إن لم تُنشئ هذا الحساب، تجاهل الرسالة
+                  ولن يحدث شيء.
+                </p>
+                <p style="margin:0;" dir="ltr">
+                  <a href="https://lovable-launchpad-woad.vercel.app" style="color:#6f6f7d;"
+                    >qbLive</a
+                  >
+                  &nbsp;·&nbsp; ألعاب دردشة تفاعلية لصنّاع البث
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
