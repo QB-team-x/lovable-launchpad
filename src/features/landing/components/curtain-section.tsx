@@ -52,7 +52,7 @@ export function CurtainSection() {
       <div className="sticky top-0 h-screen overflow-hidden">
         <div
           style={{ transform: `translate3d(0, ${shift}%, 0)` }}
-          className="relative flex h-full flex-col justify-center rounded-t-[4rem] border-x-2 border-t-4 border-primary/70 bg-background/55 px-5 shadow-[0_-20px_60px_-10px_hsl(var(--primary)/0.35)] backdrop-blur-2xl will-change-transform"
+          className="relative flex h-full flex-col justify-center rounded-t-[4rem] border-x-2 border-t-4 border-primary/70 bg-background/55 px-5 shadow-[0_-24px_70px_-20px_var(--color-primary)] backdrop-blur-2xl will-change-transform"
         >
           <span
             aria-hidden
