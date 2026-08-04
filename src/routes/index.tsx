@@ -58,8 +58,13 @@ function Landing() {
         </div>
       </header>
 
-      <LandingHero source={source} />
-      <CurtainSection />
+      <div className="sticky top-0 z-0">
+        <LandingHero source={source} />
+      </div>
+      <div className="relative z-10">
+        <CurtainSection />
+      </div>
+
     </main>
   );
 }
